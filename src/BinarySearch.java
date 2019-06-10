@@ -6,7 +6,7 @@ public class BinarySearch {
         this.array = array;
     }
 
-    // собственно алгоритм поиска
+
     public int find(double x) {
         int i = -1;
         if (this.array != null) {
