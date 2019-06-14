@@ -1,3 +1,9 @@
+import java.lang.String;
+
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.LinkedList;
+
 public class BinarySearch {
 
     private double[] array;
