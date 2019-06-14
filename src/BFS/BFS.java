@@ -1,16 +1,23 @@
 package BFS;
 
-import java.util.ArrayDeque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class BFS {
     public static Person bfs(PersonGraph graph) {
         ArrayDeque<Person> deque = new ArrayDeque<>();
+        Hashtable<Person,String> searched=new Hashtable<>();
         deque.addAll(graph.get("masha"));
         while (!deque.isEmpty()) {
             Person p = new Person(deque.pop());
-            if (p.isSeller()) return p;
-            else if (graph.get(p.getName())!=null) deque.addAll(graph.get(p.getName()));
+            if (!searched.contains(p.getName())) {
+                if (p.isSeller()) return p;
+                else if (graph.get(p.getName()) != null)
+                {
+                    deque.addAll(graph.get(p.getName()));
+                    searched.put(p,p.getName());
+                }
+                else searched.put(p,p.getName());
+            }
         }
         return new Person("nobody", false);
     }
